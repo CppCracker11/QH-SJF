@@ -1,0 +1,13 @@
+*.o
+qh-sjf
+qh-sjf.exe
+tp
+tpo
+tsi
+tm
+tq
+__pycache__/
+*.pyc
+api/.venv/
+frontend/node_modules/
+frontend/dist/

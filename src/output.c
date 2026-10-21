@@ -1,0 +1,5 @@
+#include <stdio.h>
+#include "output.h"
+void os(Pr*p,int n,const int*o,int no,Pc pc){int i;printf("\nPolicy: %s\nOrder: ",nm(pc));for(i=0;i<no;i++)printf("P%d%s",o[i],i+1<no?" -> ":"");printf("\n\nPID\tAR\tBU\tST\tCT\tWT\tTT\n");for(i=0;i<n;i++)printf("%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n",p[i].id,p[i].ar,p[i].bu,p[i].st,p[i].ct,p[i].wt,p[i].tt);}
+void ow(const char*pa,Pr*p,int n,const Mt*m,Pc pc){FILE*f=fopen(pa,"w");int i;if(!f)return;fprintf(f,"policy,pid,arrival,burst,predicted,start,completion,waiting,turnaround,response,score\n");for(i=0;i<n;i++)fprintf(f,"%s,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f\n",nm(pc),p[i].id,p[i].ar,p[i].bu,p[i].pb,p[i].st,p[i].ct,p[i].wt,p[i].tt,p[i].rt,p[i].sc);fprintf(f,"\nmetric,value\navg_wait,%.6f\navg_turnaround,%.6f\navg_response,%.6f\navg_slowdown,%.6f\nmax_wait,%.6f\np95_wait,%.6f\np99_wait,%.6f\nthroughput,%.6f\ncpu_utilization,%.6f\n",m->aw,m->at,m->ar,m->sd,m->mx,m->p5,m->p9,m->th,m->ut);fclose(f);}
+/* Glossary: os=output schedule; ow=write CSV; p=processes; n=count; od=order; no=order count; pc=policy; pa=path; m=metrics. */
